@@ -15,26 +15,46 @@
         <div class = "row">
             <div class = "col-md-12">
                 <h2>Latest Mars News</h2>
-                
-
-                    <!-- {{listings.red_planet_dict}} -->
+                <p>{{ article_title }}</p>
+                <p>{{ article_text }}</p>
         
             </div>
         </div>
         <div class = "row">
-            <div class = "col-md-6">
+            <div class = "col-md-8">
                 <h2>Featured Mars Image</h2>
-                    <!-- {{listings.image_url}} -->
+                <a href = {{spaceimages_url}}><img src={{spaceimages_url}} alt="Featured Mars Image"></a>
+
             </div>
-            <div class = "col-md-6">
+            <div class = "col-md-4">
                 <h2>Mars Facts</h2>
+                <table>{{mars_facts|safe}}</table>
             </div>
         </div>
         <div class = "row">
             <div class = "col-md-12">
                 <h2 class = "text-center">Mars Hemispheres</h2>
             </div>
+        <div class = "row">
+            <div class = "col-md-3">
+                <h3>{{hemisphere1_title}}</h3>
+                <a href = {{hemisphere1_image}}><img class="img-thumbnail" src={{hemisphere1_image}} alt="Hemisphere 1 Image"></a>
+            </div>
+            <div class = "col-md-3">
+                <h3>{{hemisphere2_title}}</h3>
+                <a href = {{hemisphere2_image}}><img class="img-thumbnail" src={{hemisphere2_image}} alt="Hemisphere 2 Image"></a>
+            </div>
+            <div class = "col-md-3">
+                <h3>{{hemisphere3_title}}</h3>
+                <a href = {{hemisphere3_image}}><img class="img-thumbnail" src={{hemisphere3_image}} alt="Hemisphere 3 Image"></a>
+            </div>
+            <div class = "col-md-3">
+                <h3>{{hemisphere4_title}}</h3>
+                <a href = {{hemisphere4_image}}><img class="img-thumbnail" src={{hemisphere4_image}} alt="Hemisphere 4 Image"></a>
+            </div>
         </div>
+
+    </div>
             </div>
         </div>
     </div>

@@ -12,8 +12,37 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 @app.route("/")
 def index():
-    listings = mongo.db.listings.find()
-    return render_template("index.html", listings=listings)
+    listings = list(mongo.db.listings.find())
+    article_title=listings[0]["redplanet_scrape"]["title"]
+    article_text=listings[0]["redplanet_scrape"]["paragraph"]
+    spaceimages_url = listings[0]["spaceimages_url"]
+    mars_facts = listings[0]["mars_data"]
+    hemisphere1_title = listings[0]["hemisphere_image_urls"][0]["title"]
+    img1 = listings[0]["hemisphere_image_urls"][0]["img_url"]
+    hemisphere1_image = f'https://marshemispheres.com/{img1}'
+    hemisphere2_title = listings[0]["hemisphere_image_urls"][1]["title"]
+    img2 = listings[0]["hemisphere_image_urls"][1]["img_url"]
+    hemisphere2_image = f'https://marshemispheres.com/{img2}'
+    hemisphere3_title = listings[0]["hemisphere_image_urls"][2]["title"]
+    img3 = listings[0]["hemisphere_image_urls"][2]["img_url"]
+    hemisphere3_image = f'https://marshemispheres.com/{img3}'
+    hemisphere4_title = listings[0]["hemisphere_image_urls"][3]["title"]
+    img4 = listings[0]["hemisphere_image_urls"][3]["img_url"]
+    hemisphere4_image = f'https://marshemispheres.com/{img4}'
+
+    return render_template("index.html", 
+        article_title = article_title, 
+        article_text = article_text,
+        spaceimages_url = spaceimages_url,
+        mars_facts = mars_facts,
+        hemisphere1_title = hemisphere1_title,
+        hemisphere1_image = hemisphere1_image,
+        hemisphere2_title = hemisphere2_title,
+        hemisphere2_image = hemisphere2_image,
+        hemisphere3_title = hemisphere3_title,
+        hemisphere3_image = hemisphere3_image,
+        hemisphere4_title = hemisphere4_title,
+        hemisphere4_image = hemisphere4_image)
 
 @app.route("/scrape")
 def scraper():
@@ -102,6 +131,7 @@ def scrape(browser):
     # print(hemisphere_image_urls)
     scrape_dict["hemisphere_image_urls"]=hemisphere_image_urls
     return scrape_dict
+
 
 if __name__ == "__main__":
     app.run(debug=True)
